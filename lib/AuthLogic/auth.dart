@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gitson/UI/MainScreen.dart';
-import '../UI/LogIn.dart';
+import '../HotelBookingUi/AccountScreens/LogGmailPage.dart';
+import '../Services/ServicesOpt.dart';
+
 
 class Auth extends StatefulWidget {
   const Auth({Key? key}) : super(key: key);
@@ -18,9 +19,9 @@ class _AuthState extends State<Auth> {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return  const MainScreen();
+              return  const ServicesOpt();
             } else {
-              return const LogIn();
+              return const LogGmailPage();
             }
           }),
     );
