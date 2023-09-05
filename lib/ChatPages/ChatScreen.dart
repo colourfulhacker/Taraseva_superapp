@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gitson/ChatPages/Payment.dart';
 import 'package:gitson/Pandits/Home.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
@@ -45,21 +47,35 @@ class _ChatPageState extends State<ChatPage> {
       context: context,
       builder: (BuildContext context) => SafeArea(
         child: SizedBox(
-          height: 204,
+          height: 250,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    _handleImageSelection();
-                  },
-                  child: const Align(
-                    alignment: AlignmentDirectional.centerStart,
-                    child: Text('Photo'),
+                Row(
+                  children:[ TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _handleImageSelection();
+                    },
+                    child: const Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Text('Photo'),
+                    ),
                   ),
-                ),
+                    SizedBox(width: 200.w,),
+                    GestureDetector(
+                        onTap: (){
+                          //logic for audio calling
+                        },
+                        child: Image.asset("assets/logos/img_13.png",scale: 20,color: Colors.blue,)),
+                    SizedBox(width: 50.w,),
+                    GestureDetector(
+                        onTap: (){
+                          //logic for video calling
+                        },
+                        child: Image.asset("assets/logos/img_14.png",scale: 20,color: Colors.blue,)),
+                ]),
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -68,6 +84,13 @@ class _ChatPageState extends State<ChatPage> {
                   child: const Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: Text('File'),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=>const Payments())),
+                  child: const Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text('Payment'),
                   ),
                 ),
                 TextButton(
